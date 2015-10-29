@@ -11,7 +11,14 @@ namespace Test.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            //return View();
+            return RedirectToAction("IndexUD");
+            //return Redirect("IndexUD");
+        }
 
+        public ActionResult IndexUD()
+        {
+            ViewBag.Message = "在线测试 ASP.NET MVC application.";
             return View();
         }
 
