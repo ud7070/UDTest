@@ -101,5 +101,38 @@ namespace Test.Areas.Control.Controllers
                 return View();
             }
         }
+
+        public ActionResult UEditor()
+        {
+            return View();
+        }
+
+        public void OnlineRead(ControllerContext context)
+        {
+            //HttpResponseBase response = context.HttpContext.Response; 
+
+            //string p = Request.QueryString["FilePath"];
+            string p = "简历-杨帆.doc";
+            string filePath = Server.MapPath("~/temp/" + p);
+            Response.ClearContent();
+            Response.ClearHeaders();
+            string FilePost = filePath.Substring(filePath.Length - 3).ToLower();
+            switch (FilePost)
+            {
+                case "pdf":
+                    Response.ContentType = "application/PDF";
+                    break;
+                case "doc":
+                    Response.ContentType = "application/msword";
+                    break;
+                default:
+                    Response.Write("<script>alert('该文件格式不能进行在线阅读！'");
+                    break;
+            }
+            Response.WriteFile(filePath);
+            Response.Flush();
+            Response.Close();
+            //return View();
+        }
     }
 }
