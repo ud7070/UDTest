@@ -110,7 +110,7 @@ namespace Test.Areas.Control.Controllers
         public void OnlineRead(ControllerContext context)
         {
             //string p = Request.QueryString["FilePath"];
-            string p = "简历-杨帆.doc";
+            string p = "demo.doc";
             string filePath = Server.MapPath("~/temp/" + p);
             Response.ClearContent();
             Response.ClearHeaders();

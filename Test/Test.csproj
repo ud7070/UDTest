@@ -579,9 +579,6 @@
     <Content Include="Scripts\ueditor\third-party\video-js\font\vjs.eot" />
     <Content Include="Scripts\ueditor\third-party\video-js\font\vjs.ttf" />
     <Content Include="Scripts\ueditor\third-party\video-js\font\vjs.woff" />
-    <Content Include="temp\Hishop销客多产品销售优惠方案9.18.docx" />
-    <Content Include="temp\傻瓜系列之闪存存储.pdf" />
-    <Content Include="temp\简历-杨帆.doc" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
