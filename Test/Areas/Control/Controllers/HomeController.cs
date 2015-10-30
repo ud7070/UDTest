@@ -109,8 +109,6 @@ namespace Test.Areas.Control.Controllers
 
         public void OnlineRead(ControllerContext context)
         {
-            //HttpResponseBase response = context.HttpContext.Response; 
-
             //string p = Request.QueryString["FilePath"];
             string p = "简历-杨帆.doc";
             string filePath = Server.MapPath("~/temp/" + p);
