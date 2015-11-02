@@ -107,30 +107,55 @@ namespace Test.Areas.Control.Controllers
             return View();
         }
 
-        public void OnlineRead(ControllerContext context)
+        public ActionResult OnlineRead()
         {
-            //string p = Request.QueryString["FilePath"];
+            ////string p = Request.QueryString["FilePath"];
+            //string p = "demo.doc";
+            //string filePath = Server.MapPath("~/temp/" + p);
+            //Response.ClearContent();
+            //Response.ClearHeaders();
+            //string FilePost = filePath.Substring(filePath.Length - 3).ToLower();
+            //switch (FilePost)
+            //{
+            //    case "pdf":
+            //        Response.ContentType = "application/PDF";
+            //        break;
+            //    case "doc":
+            //        Response.ContentType = "application/msword";
+            //        break;
+            //    default:
+            //        Response.Write("<script>alert('该文件格式不能进行在线阅读！'");
+            //        break;
+            //}
+            //Response.WriteFile(filePath);
+            //Response.Flush();
+            //Response.Close();
+            ////return View();
+
             string p = "demo.doc";
-            string filePath = Server.MapPath("~/temp/" + p);
-            Response.ClearContent();
-            Response.ClearHeaders();
-            string FilePost = filePath.Substring(filePath.Length - 3).ToLower();
-            switch (FilePost)
-            {
-                case "pdf":
-                    Response.ContentType = "application/PDF";
-                    break;
-                case "doc":
-                    Response.ContentType = "application/msword";
-                    break;
-                default:
-                    Response.Write("<script>alert('该文件格式不能进行在线阅读！'");
-                    break;
-            }
-            Response.WriteFile(filePath);
-            Response.Flush();
-            Response.Close();
-            //return View();
+            String fs_filename = Server.MapPath("~/temp/" + p);
+            String fs_convertedfilename = Server.MapPath("~/temp/") + "demo" + ".swf";
+
+            Print2Flash3.Server2 p2fServer = new Print2Flash3.Server2();
+            //p2fServer.DefaultBatchProcessingOptions.BeforePrintingTimeout = 120000;//改成两分钟
+            //p2fServer.ConvertFile(fs_filename, fs_convertedfilename, null, p2fServer.DefaultBatchProcessingOptions, null);//调用转化主程序
+            p2fServer.ConvertFile(fs_filename, fs_convertedfilename, null, null, null);
+
+            //int interfaceOptions = 0;
+            //for (int i = 0; i < cblDocOptions.Items.Count; i++)
+            //    if (cblDocOptions.Items[i].Selected)
+            //        interfaceOptions |= Int32.Parse(cblDocOptions.Items[i].Value);
+            //Print2Flash3.Server2 p2fServer = new Print2Flash3.Server2();
+            //p2fServer.DefaultProfile.InterfaceOptions = interfaceOptions;
+            //p2fServer.DefaultProfile.ProtectionOptions = (int)Print2Flash3.PROTECTION_OPTION.PROTENAPI;
+            //p2fServer.ConvertFile(fs_filename, fs_convertedfilename, null, null, null); 
+
+            return View();
+        }
+
+        public ActionResult wdDatePicker()
+        {
+            return View();
         }
     }
 }
